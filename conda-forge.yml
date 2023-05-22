@@ -14,3 +14,5 @@ os_version:
   linux_aarch64: cos7
 
 test: native
+bot:
+  automerge: true
