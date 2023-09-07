@@ -17,7 +17,21 @@ Current build status
 ====================
 
 
-<table>
+<table><tr>
+    <td>Travis</td>
+    <td>
+      <a href="https://app.travis-ci.com/conda-forge/power-grid-model-feedstock">
+        <img alt="linux" src="https://img.shields.io/travis/com/conda-forge/power-grid-model-feedstock/main.svg?label=Linux">
+      </a>
+    </td>
+  </tr><tr>
+    <td>Appveyor</td>
+    <td>
+      <a href="https://ci.appveyor.com/project/conda-forge/power-grid-model-feedstock/branch/main">
+        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/power-grid-model-feedstock/main.svg?label=Windows">
+      </a>
+    </td>
+  </tr>
     
   <tr>
     <td>Azure</td>
