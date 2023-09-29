@@ -21,6 +21,8 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - eigen
     - boost-cpp
+    - msgpack-cxx
+    - nlohmann_json
 
   host:
     - python
@@ -44,6 +46,7 @@ test:
     - pip
     - pytest
     - pytest-cov
+    - msgpack-python
 
 about:
   home: https://lfenergy.org/projects/power-grid-model/
