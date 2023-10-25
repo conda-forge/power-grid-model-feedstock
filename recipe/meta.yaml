@@ -1,5 +1,5 @@
 {% set name = "power-grid-model" %}
-{% set version = "1.6.17" %}
+{% set version = "1.6.18" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/power-grid-model-{{ version }}.tar.gz
-  sha256: 3932cd8d6970de0b43fd1ba1a38393df45cf217302f22a5aa49f490a3bb46ab0
+  sha256: 2ee270e221c54d924b9992a1288b603c00ba035f9eb86f9af053b7cbf153ad34
 
 build:
   skip: true  # [py<37 or win32 or ppc64le or (python_impl == 'pypy')]
