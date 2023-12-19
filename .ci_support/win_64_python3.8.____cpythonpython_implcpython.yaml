@@ -1,5 +1,3 @@
-boost_cpp:
-- 1.78.0
 channel_sources:
 - conda-forge
 channel_targets:
@@ -9,8 +7,6 @@ cxx_compiler:
 msgpack_cxx:
 - '6'
 pin_run_as_build:
-  boost-cpp:
-    max_pin: x.x.x
   python:
     min_pin: x.x
     max_pin: x.x

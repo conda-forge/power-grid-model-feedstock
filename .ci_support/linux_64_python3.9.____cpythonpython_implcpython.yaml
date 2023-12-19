@@ -1,5 +1,3 @@
-boost_cpp:
-- 1.78.0
 cdt_name:
 - cos7
 channel_sources:
@@ -15,8 +13,6 @@ docker_image:
 msgpack_cxx:
 - '6'
 pin_run_as_build:
-  boost-cpp:
-    max_pin: x.x.x
   python:
     min_pin: x.x
     max_pin: x.x
