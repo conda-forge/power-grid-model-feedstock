@@ -7,3 +7,4 @@ cxx_compiler:  # [win]
 # Local workaround addressing https://github.com/conda-forge/vc-feedstock/issues/83
 cxx_compiler_version:  # [win]
   - 19.40              # [win]
+  
