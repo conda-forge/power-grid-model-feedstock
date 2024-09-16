@@ -5,7 +5,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2022
+- vs2019
 libboost_headers:
 - '1.84'
 msgpack_cxx:
