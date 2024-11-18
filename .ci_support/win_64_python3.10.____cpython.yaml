@@ -9,7 +9,7 @@ cxx_compiler:
 libboost_headers:
 - '1.84'
 msgpack_cxx:
-- '6'
+- '7'
 pin_run_as_build:
   python:
     min_pin: x.x
