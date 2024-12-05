@@ -1,13 +1,13 @@
 {% set name = "power-grid-model" %}
-{% set version = "1.10.17" %}
+{% set version = "1.10.18" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/46/e1/1c4ae6485ffa5035b4f8c426f27f121551b83b9c30cb30ae6dcccb7aa58b/power_grid_model-{{ version }}.tar.gz
-  sha256: 18065e10e47d938b9a2213b714275403ca484fb37e232e655da9e7662eb8b9ee
+  url: https://files.pythonhosted.org/packages/b9/99/7fc791fe42fdd73566c235b7f969297a1dcfdc1409bf05fe8897402191b4/power_grid_model-{{ version }}.tar.gz
+  sha256: fd15439166cabfe36a34854b9aa789d2d4ace985950780e13cb852ebafb8659a
 
 build:
   skip: true  # [py<310 or win32 or ppc64le or (python_impl == 'pypy')]
