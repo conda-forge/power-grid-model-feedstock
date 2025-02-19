@@ -4,7 +4,6 @@ azure:
       SET_PAGEFILE: "True"
       CONDA_BLD_PATH: "C:\\bld"
       MINIFORGE_HOME: "C:\\Miniforge"
-      CPU_COUNT: 1
 bot:
   automerge: true
 build_platform:
