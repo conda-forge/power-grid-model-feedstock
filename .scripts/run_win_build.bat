@@ -73,9 +73,7 @@ if NOT [%flow_run_id%] == [] (
 call :end_group
 
 :: Build the recipe
-echo Building recipe:
-echo conda-build.exe "recipe" -m .ci_support\%CONFIG%.yaml --suppress-variables %EXTRA_CB_OPTIONS%
-echo Start
+echo Building recipe
 conda-build.exe "recipe" -m .ci_support\%CONFIG%.yaml --suppress-variables %EXTRA_CB_OPTIONS%
 if !errorlevel! neq 0 exit /b !errorlevel!
 
