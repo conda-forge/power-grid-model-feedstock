@@ -11,7 +11,7 @@ source:
 
 build:
   skip: true  # [py<311 or win32 or ppc64le or (python_impl == 'pypy')]
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --global-option="build_ext" --global-option="-j1"
   number: 2
 
 requirements:
