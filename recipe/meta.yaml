@@ -1,17 +1,18 @@
 {% set name = "power-grid-model" %}
-{% set version = "1.10.47" %}
+{% set version = "1.10.58" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 1b0fbd807e0dbb067b715368f54ddce847a8c18510d896cdde1aeb462527dd55
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://github.com/PowerGridModel/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: 53df15c66c1189302ea4beba1438b46e27bf79dae51eaeda7eb22019863dd80e
 
 build:
   skip: true  # [py<311 or win32 or ppc64le or (python_impl == 'pypy')]
-  script: {{ PYTHON }} -m pip install . -vv
+  # script: {{ PYTHON }} -m pip install . -vv
   number: 0
 
 requirements:
@@ -24,6 +25,8 @@ requirements:
     - libboost-headers
     - msgpack-cxx
     - nlohmann_json
+    - ninja
+    - cmake
 
   host:
     - python
