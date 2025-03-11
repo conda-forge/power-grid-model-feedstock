@@ -7,8 +7,8 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/PowerGridModel/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 53df15c66c1189302ea4beba1438b46e27bf79dae51eaeda7eb22019863dd80e
+  url: https://github.com/PowerGridModel/{{ name }}/archive/v{{ version }}-no-lto.tar.gz
+  sha256: 9bb4f31219a887a8526f770f6b86b591bbe74493799a7b957cfa80fa7f3d2e21
 
 build:
   skip: true  # [py<311 or win32 or ppc64le or (python_impl == 'pypy')]
