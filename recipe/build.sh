@@ -7,7 +7,6 @@ cmake ${CMAKE_ARGS} \
       -DCMAKE_BUILD_TYPE=Release \
       -B build/ \
       -S . \
-      -DCMAKE_PREFIX_PATH=${BUILD_PREFIX} \
       -DCMAKE_INSTALL_PREFIX=${PREFIX}
 
 cmake --build build/ --verbose -j1
