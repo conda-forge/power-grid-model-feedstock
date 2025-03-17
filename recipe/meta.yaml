@@ -9,7 +9,7 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   # url: https://github.com/PowerGridModel/{{ name }}/archive/v{{ version }}.tar.gz
   url: https://github.com/PowerGridModel/power-grid-model/archive/math-solver-dispatch.tar.gz
-  sha256: c925a06173cf0338b3a6a1967b056a293344b80d2f62d084f563d59e82aebe0c
+  sha256: 493bab6f097abf9d1f398508220c464dd2c49346e4e1e1c0e463cf9afc316aef
 
 build:
   skip: true  # [py<311 or win32 or ppc64le or (python_impl == 'pypy')]
