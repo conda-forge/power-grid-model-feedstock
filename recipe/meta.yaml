@@ -14,6 +14,9 @@ source:
 build:
   skip: true  # [py<311 or win32 or ppc64le or (python_impl == 'pypy')]
   number: 0
+  ignore_run_exports:
+    - libboost-devel
+    - msgpack-cxx
 
 requirements:
   build:
