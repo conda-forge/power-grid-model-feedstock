@@ -1,6 +1,8 @@
 MACOSX_SDK_VERSION:        # [osx and x86_64]
   - 10.15                  # [osx and x86_64]
 c_compiler:    # [win]
-- vs2022       # [win]
+  - vs2022       # [win]
 cxx_compiler:  # [win]
-- vs2022       # [win]
+  - vs2022       # [win]
+libboost_devel:
+  - '1.86'

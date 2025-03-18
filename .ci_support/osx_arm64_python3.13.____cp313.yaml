@@ -14,8 +14,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '18'
-libboost_headers:
-- '1.84'
+libboost_devel:
+- '1.86'
 macos_machine:
 - arm64-apple-darwin20.0.0
 msgpack_cxx:
