@@ -1,5 +1,5 @@
 {% set name = "power-grid-model" %}
-{% set version = "1.10.58" %}
+{% set version = "1.10.64" %}
 
 package:
   name: {{ name|lower }}
@@ -7,9 +7,8 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  # url: https://github.com/PowerGridModel/{{ name }}/archive/v{{ version }}.tar.gz
-  url: https://github.com/PowerGridModel/power-grid-model/archive/math-solver-dispatch.tar.gz
-  sha256: 493bab6f097abf9d1f398508220c464dd2c49346e4e1e1c0e463cf9afc316aef
+  url: https://github.com/PowerGridModel/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: 64de490ee2ff176dfaa7a539695593f2b73133b22562486ab946cba58c6f4928
 
 build:
   skip: true  # [py<311 or win32 or ppc64le or (python_impl == 'pypy')]
