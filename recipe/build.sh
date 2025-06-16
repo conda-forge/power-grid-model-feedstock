@@ -13,4 +13,4 @@ cmake --build build/ --verbose -j1
 
 cmake --install build/
 
-POWER_GRID_MODEL_NO_BINARY_BUILD=1 ${PYTHON} -m pip install . -vv --no-build-isolation --no-deps   
+${PYTHON} -m pip install . -vv --no-build-isolation --no-deps -C wheel.cmake=false
