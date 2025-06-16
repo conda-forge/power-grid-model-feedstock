@@ -1,7 +1,7 @@
 echo %PKG_VERSION% > VERSION
-set POWER_GRID_MODEL_NO_BINARY_BUILD=1
 
 cmake ^
+    %CMAKE_ARGS% ^
     -GNinja ^
     -B build/ ^
     -S . ^
@@ -18,6 +18,6 @@ cmake --install build/
 
 if %errorlevel% neq 0 exit /b %errorlevel%
 
-%PYTHON% -m pip install . -vv --no-build-isolation --no-deps   
+%PYTHON% -m pip install . -vv --no-build-isolation --no-deps -C wheel.cmake=false
 
 if %errorlevel% neq 0 exit /b %errorlevel%
