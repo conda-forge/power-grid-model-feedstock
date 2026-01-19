@@ -11,7 +11,7 @@ source:
   sha256: 1643e03beac92c6594f799bfa41239e23e334f3c48a0324651ebc7168e8d9ab2
 
 build:
-  skip: true  # [py<311 or py>313 or win32 or ppc64le or (python_impl == 'pypy')]
+  skip: true  # [py<312 or py>314 or win32 or ppc64le or (python_impl == 'pypy')]
   number: 0
 
 requirements:
