@@ -18,6 +18,10 @@ cmake --install build/
 
 if %errorlevel% neq 0 exit /b %errorlevel%
 
+%PYTHON% conda_build_preparation.py
+
+if %errorlevel% neq 0 exit /b %errorlevel%
+
 %PYTHON% -m pip install . -vv --no-build-isolation --no-deps -C wheel.cmake=false
 
 if %errorlevel% neq 0 exit /b %errorlevel%

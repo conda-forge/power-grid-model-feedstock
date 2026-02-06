@@ -7,12 +7,14 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/PowerGridModel/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 7c895c0f411810f621164062f37b7c084f4cc890bba90cf26c793b3d4c9c7e90
+  # url: https://github.com/PowerGridModel/{{ name }}/archive/v{{ version }}.tar.gz
+  # sha256: 7c895c0f411810f621164062f37b7c084f4cc890bba90cf26c793b3d4c9c7e90
+  url: https://github.com/PowerGridModel/power-grid-model/archive/37987418799ce681231dd82eb2898d8f376db05d.tar.gz
+  sha256: 3100829d1ba016ab1f35c809361c5912d1ac2ff673e9601002a6525a59f50fe9
 
 build:
   skip: true  # [py<312 or py>314 or win32 or ppc64le or (python_impl == 'pypy')]
-  number: 0
+  number: 1  # TODO revert to 0 before real merge
 
 requirements:
   build:
@@ -26,6 +28,7 @@ requirements:
     - nlohmann_json
     - ninja
     - cmake
+    - cli11
 
   host:
     - python
@@ -41,6 +44,8 @@ test:
   commands:
     - pip check
     - pytest
+    - power-grid-model --help
+    - power-grid-model --version
   source_files:
     - tests
     - pyproject.toml
