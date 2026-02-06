@@ -44,6 +44,8 @@ test:
   commands:
     - pip check
     - pytest
+    - power-grid-model --help
+    - power-grid-model --version
   source_files:
     - tests
     - pyproject.toml
