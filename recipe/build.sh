@@ -19,4 +19,6 @@ cmake --build build/ --verbose -j1
 
 cmake --install build/
 
+${PYTHON} conda_build_preparation.py
+
 ${PYTHON} -m pip install . -vv --no-build-isolation --no-deps -C wheel.cmake=false
