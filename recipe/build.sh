@@ -3,7 +3,7 @@
 # Get c++20 to work:
 # https://conda-forge.org/docs/maintainer/knowledge_base/#newer-c-features-with-old-sdk
 if [[ $(uname) == "Darwin" ]]; then
-  export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
+  export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY -fexperimental-library"
 fi
 
 echo ${PKG_VERSION} > VERSION
