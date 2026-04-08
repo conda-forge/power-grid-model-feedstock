@@ -1,5 +1,5 @@
 c_stdlib_version:          # [osx]
-  - "13.3"                 # [osx]
+  - "26.0"                 # [osx]
 MACOSX_SDK_VERSION:        # [osx]
   - "13.3"                 # [osx]
 c_compiler:      # [win]
