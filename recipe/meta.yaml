@@ -1,5 +1,5 @@
 {% set name = "power-grid-model" %}
-{% set version = "1.13.49" %}
+{% set version = "1.13.50" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/PowerGridModel/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 41ea7b9f919eb1f4a77272507263719e203f239119a13aa7622b241f2eb82ec8
+  sha256: 17cd1c3b6b573f636372a0853f0db87c5091a6206755249c1112223c8e52731e
 
 build:
   skip: true  # [py<312 or py>314 or win32 or ppc64le or (python_impl == 'pypy')]
