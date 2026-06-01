@@ -8,6 +8,9 @@ fi
 
 echo ${PKG_VERSION} > ${SRC_DIR}/VERSION
 
+ls -al ${SRC_DIR}
+ls -al .
+
 cmake ${CMAKE_ARGS} \
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
