@@ -4,7 +4,7 @@ cmake ^
     %CMAKE_ARGS% ^
     -GNinja ^
     -B build/ ^
-    -S . ^
+    -S %SRC_DIR% ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -DCMAKE_BUILD_TYPE=Release
 

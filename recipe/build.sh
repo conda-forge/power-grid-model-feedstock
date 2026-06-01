@@ -12,7 +12,7 @@ cmake ${CMAKE_ARGS} \
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
       -B build/ \
-      -S . \
+      -S ${SRC_DIR} \
       -DCMAKE_INSTALL_PREFIX=${PREFIX}
 
 cmake --build build/ --verbose -j1
