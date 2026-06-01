@@ -19,4 +19,4 @@ cmake --build build/ --verbose -j1
 
 cmake --install build/
 
-${PYTHON} -m pip install . -vv --no-build-isolation --no-deps -C wheel.cmake=false
+${PYTHON} -m pip install ${SRC_DIR} -vv --no-build-isolation --no-deps -C wheel.cmake=false
