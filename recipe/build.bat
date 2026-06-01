@@ -1,10 +1,10 @@
-echo %PKG_VERSION% > VERSION
+echo %PKG_VERSION% > %SRC_DIR%/VERSION
 
 cmake ^
     %CMAKE_ARGS% ^
     -GNinja ^
     -B build/ ^
-    -S . ^
+    -S %SRC_DIR% ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -DCMAKE_BUILD_TYPE=Release
 
@@ -18,6 +18,6 @@ cmake --install build/
 
 if %errorlevel% neq 0 exit /b %errorlevel%
 
-%PYTHON% -m pip install . -vv --no-build-isolation --no-deps -C wheel.cmake=false
+%PYTHON% -m pip install %SRC_DIR% -vv --no-build-isolation --no-deps -C wheel.cmake=false
 
 if %errorlevel% neq 0 exit /b %errorlevel%

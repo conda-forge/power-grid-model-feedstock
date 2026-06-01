@@ -6,17 +6,20 @@ if [[ $(uname) == "Darwin" ]]; then
   export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY -fexperimental-library"
 fi
 
-echo ${PKG_VERSION} > VERSION
+echo ${PKG_VERSION} > ${SRC_DIR}/VERSION
+
+ls -al ${SRC_DIR}
+ls -al .
 
 cmake ${CMAKE_ARGS} \
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
       -B build/ \
-      -S . \
+      -S ${SRC_DIR} \
       -DCMAKE_INSTALL_PREFIX=${PREFIX}
 
 cmake --build build/ --verbose -j1
 
 cmake --install build/
 
-${PYTHON} -m pip install . -vv --no-build-isolation --no-deps -C wheel.cmake=false
+${PYTHON} -m pip install ${SRC_DIR} -vv --no-build-isolation --no-deps -C wheel.cmake=false

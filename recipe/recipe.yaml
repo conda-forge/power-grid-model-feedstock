@@ -1,0 +1,76 @@
+schema_version: 1
+
+context:
+  name: power-grid-model
+  version: "1.13.81"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/PowerGridModel/${{ name }}/archive/v${{ version }}.tar.gz
+  sha256: dc6dfe0d88c3bde2da79c95e43022ac7621c4b5ab8edd9829bb42ebc2217ff65
+
+build:
+  number: 1
+  skip: match(python, "<3.12") or match(python, ">3.12") or win32 or ppc64le or (python_impl == 'pypy')
+  python:
+    version_independent: true
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib("c") }}
+    - if: build_platform != target_platform
+      then: python
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
+    - eigen
+    - libboost-devel
+    - msgpack-cxx
+    - nlohmann_json
+    - ninja
+    - cmake
+  host:
+    - python
+    - scikit-build-core
+    - pip
+  run:
+    - python
+    - numpy >=2.0.0
+
+tests:
+  - python:
+      imports:
+        - power_grid_model
+      pip_check: true
+  - files:
+      source:
+        - tests
+        - pyproject.toml
+    requirements:
+      run:
+        - pip
+        - pytest
+        - pytest-cov
+        - msgpack-python
+        - colorama
+    script:
+      - pytest
+
+about:
+  summary: Python/C++ library for distribution power system analysis
+  license: MPL-2.0
+  license_file: LICENSE
+  homepage: https://lfenergy.org/projects/power-grid-model/
+  repository: https://github.com/PowerGridModel/power-grid-model
+  documentation: https://power-grid-model.readthedocs.io/
+
+extra:
+  recipe-maintainers:
+    - figueroa1395
+    - TonyXiang8787
+    - mgovers
+    - nitbharambe
+    - petersalemink95
