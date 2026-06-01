@@ -1,4 +1,4 @@
-echo %PKG_VERSION% > VERSION
+echo %PKG_VERSION% > %SRC_DIR%/VERSION
 
 cmake ^
     %CMAKE_ARGS% ^

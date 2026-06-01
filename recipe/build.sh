@@ -6,10 +6,7 @@ if [[ $(uname) == "Darwin" ]]; then
   export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY -fexperimental-library"
 fi
 
-ls -al .
-ls -al ${SRC_DIR}
-
-echo ${PKG_VERSION} > VERSION
+echo ${PKG_VERSION} > ${SRC_DIR}/VERSION
 
 cmake ${CMAKE_ARGS} \
       -GNinja \
