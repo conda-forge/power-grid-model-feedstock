@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: power-grid-model
-  version: "1.13.81"
+  version: "1.13.82"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://github.com/PowerGridModel/${{ name }}/archive/v${{ version }}.tar.gz
-  sha256: dc6dfe0d88c3bde2da79c95e43022ac7621c4b5ab8edd9829bb42ebc2217ff65
+  sha256: 327b794c5b7a0cca4cb045bcb0cf75ac967da33e8560851dce2ca2ef23d13051
 
 build:
-  number: 1
+  number: 0
   skip: match(python, "<3.12") or match(python, ">3.12") or win32 or ppc64le or (python_impl == 'pypy')
   python:
     version_independent: true
@@ -23,9 +23,9 @@ requirements:
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
     - if: build_platform != target_platform
-      then: python
-    - if: build_platform != target_platform
-      then: cross-python_${{ target_platform }}
+      then:
+        - python
+        - cross-python_${{ target_platform }}
     - eigen
     - libboost-devel
     - msgpack-cxx
