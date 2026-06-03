@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: power-grid-model
-  version: "1.13.85"
+  version: "1.13.86"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/PowerGridModel/${{ name }}/archive/v${{ version }}.tar.gz
-  sha256: 62fb7147fb3a00e4d09ccf9ff559100ae63be6996c5be5733486a950e456fc06
+  sha256: c92dd150879d92ef929a7edf134d70530fb1e56b5e44796031337072d5c3d860
 
 build:
   number: 0
