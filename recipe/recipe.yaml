@@ -108,8 +108,7 @@ outputs:
           pip_check: true
       - files:
           source:
-            - tests/unit
-            - tests/data
+            - tests
             - pyproject.toml
         requirements:
           run:
