@@ -11,6 +11,7 @@ source:
 build:
   number: 1
 
+# multi stage build to build the C++ library and the Python bindings separately
 outputs:
   
   # Build the C++ library for all platforms
@@ -34,7 +35,9 @@ outputs:
         - libboost-devel
         - msgpack-cxx
         - nlohmann_json
-      run:
+      run_exports:
+        # pin stable ABI on major version
+        - ${{ pin_subpackage('libpower-grid-model', upper_bound='x') }}
 
     tests:
       - files:
@@ -42,7 +45,12 @@ outputs:
             - tests
         requirements:
           run:
+            - cmake
+            - ninja
+            - ${{ compiler('cxx') }}
+            - ${{ stdlib("c") }}
 
+        # TODO add test
         script:
           - cmake --help
 
@@ -55,6 +63,8 @@ outputs:
       skip: match(python, "<3.12") or match(python, ">3.12") or win32 or ppc64le or (python_impl == 'pypy')
       python:
         version_independent: true
+      script:
+        file: ${{ "build_power-grid-model.bat" if win else "build_power-grid-model.sh" }}
 
     requirements:
       build:
@@ -68,6 +78,7 @@ outputs:
         - pip
       run:
         - python
+        - ${{ pin_subpackage('libpower-grid-model', exact=True) }}
         - numpy >=2.0.0
 
     tests:
