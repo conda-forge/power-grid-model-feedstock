@@ -71,7 +71,7 @@ outputs:
               - mkdir build
               - cmake ${CMAKE_ARGS} -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Release
               - cmake --build build
-              - ./build/bin/power_grid_model_package_test
+              - ./build/power_grid_model_package_test
           - if: win
             then:
               - cmake --help
