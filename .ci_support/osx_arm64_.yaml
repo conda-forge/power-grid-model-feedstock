@@ -23,6 +23,6 @@ msgpack_cxx:
 python_impl:
 - cpython
 python_min:
-- '3.10'
+- '3.12'
 target_platform:
 - osx-arm64
