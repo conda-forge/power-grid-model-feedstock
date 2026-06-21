@@ -14,6 +14,8 @@ source:
 
 build:
   number: 1
+  skip: match(python, "<3.12") or match(python, ">3.12") or win32 or ppc64le or (python_impl == 'pypy')
+
 
 # multi stage build to build the C++ library and the Python bindings separately
 outputs:
@@ -24,9 +26,13 @@ outputs:
       version: ${{ version }}
 
     build:
-      skip: win32 or ppc64le or (python_impl == 'pypy')
       script:
         file: ${{ "build_libpower-grid-model.bat" if win else "build_libpower-grid-model.sh" }}
+      variant:
+        # libpower-grid-model is a pure C++ library
+        # so the package is not Python-versioned.
+        ignore_keys:
+          - python
 
     requirements:
       build:
@@ -64,7 +70,6 @@ outputs:
       version: ${{ version }}
 
     build:
-      skip: match(python, "<3.12") or match(python, ">3.12") or win32 or ppc64le or (python_impl == 'pypy')
       python:
         version_independent: true
       script:
