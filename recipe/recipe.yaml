@@ -89,8 +89,7 @@ outputs:
         - pip
       run:
         - python >= ${{ python_min }}
-        # TODO fix this without exact build number
-        - ${{ pin_subpackage('libpower-grid-model', exact=True) }}
+        - ${{ pin_subpackage('libpower-grid-model', upper_bound='x.x.x') }}
         - numpy >=2.0.0
 
     tests:
