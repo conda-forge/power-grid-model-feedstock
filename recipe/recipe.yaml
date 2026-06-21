@@ -40,11 +40,14 @@ outputs:
         - ${{ stdlib("c") }}
         - ninja
         - cmake
-      host:
         - eigen
         - libboost-devel
         - msgpack-cxx
         - nlohmann_json
+
+      # empty host requirements to avoid pinning the header-only dependencies in runtime
+      host:
+
       run_exports:
         # pin stable ABI on major version
         - ${{ pin_subpackage('libpower-grid-model', upper_bound='x') }}
