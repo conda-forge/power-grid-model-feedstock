@@ -74,6 +74,7 @@ outputs:
 
     build:
       noarch: python
+      skip: not linux_64
       script:
         file: ${{ "build_power-grid-model.bat" if win else "build_power-grid-model.sh" }}
 
