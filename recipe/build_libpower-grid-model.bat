@@ -17,7 +17,3 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 cmake --install build/
 
 if %errorlevel% neq 0 exit /b %errorlevel%
-
-%PYTHON% -m pip install %SRC_DIR% -vv --no-build-isolation --no-deps -C wheel.cmake=false
-
-if %errorlevel% neq 0 exit /b %errorlevel%
