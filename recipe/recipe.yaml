@@ -3,6 +3,7 @@ schema_version: 1
 context:
   feedstock_name: power-grid-model
   version: "1.13.99"
+  python_min: "3.12"
 
 recipe:
   name: power-grid-model
@@ -14,7 +15,7 @@ source:
 
 build:
   number: 1
-  skip: match(python, "<3.12") or match(python, ">3.12") or win32 or ppc64le or (python_impl == 'pypy')
+  skip: win32 or ppc64le or (python_impl == 'pypy')
 
 
 # multi stage build to build the C++ library and the Python bindings separately
@@ -73,8 +74,7 @@ outputs:
       version: ${{ version }}
 
     build:
-      python:
-        version_independent: true
+      noarch: python
       script:
         file: ${{ "build_power-grid-model.bat" if win else "build_power-grid-model.sh" }}
 
@@ -82,14 +82,14 @@ outputs:
       build:
         - if: build_platform != target_platform
           then:
-            - python
-            - cross-python_${{ target_platform }}
+            - python ${{ python_min }}
+            - cross-python_${{ target_platform }} ${{ python_min }}
       host:
-        - python
+        - python ${{ python_min }}
         - scikit-build-core
         - pip
       run:
-        - python
+        - python >= ${{ python_min }}
         - ${{ pin_subpackage('libpower-grid-model', exact=True) }}
         - numpy >=2.0.0
 
