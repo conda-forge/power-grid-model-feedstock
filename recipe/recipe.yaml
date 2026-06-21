@@ -55,7 +55,7 @@ outputs:
     tests:
       - files:
           source:
-            - tests
+            - tests/package_tests
         requirements:
           run:
             - cmake
@@ -65,7 +65,16 @@ outputs:
 
         # TODO add test
         script:
-          - cmake --help
+          - if: unix
+            then:
+              - cd tests/package_tests
+              - mkdir build
+              - cmake ${CMAKE_ARGS} -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Release
+              - cmake --build build
+              - ./build/bin/power_grid_model_package_test
+          - if: win
+            then:
+              - cmake --help
 
   # Build the Python bindings for all platforms
   - package:
@@ -99,7 +108,8 @@ outputs:
           pip_check: true
       - files:
           source:
-            - tests
+            - tests/unit
+            - tests/data
             - pyproject.toml
         requirements:
           run:
