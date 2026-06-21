@@ -74,7 +74,11 @@ outputs:
               - ./build/power_grid_model_package_test
           - if: win
             then:
-              - cd tests/package_tests
+              - cd tests\package_tests
+              - mkdir build
+              - cmake %CMAKE_ARGS% -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Release
+              - cmake --build build
+              - .\build\power_grid_model_package_test.exe
 
   # Build the Python bindings for all platforms
   - package:
