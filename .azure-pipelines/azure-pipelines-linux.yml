@@ -8,8 +8,8 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_python3.12.____cpython:
-        CONFIG: linux_64_python3.12.____cpython
+      linux_64_:
+        CONFIG: linux_64_
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         docker_run_args: ''
@@ -19,8 +19,8 @@ jobs:
         resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
-      linux_aarch64_python3.12.____cpython:
-        CONFIG: linux_aarch64_python3.12.____cpython
+      linux_aarch64_:
+        CONFIG: linux_aarch64_
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         docker_run_args: ''
