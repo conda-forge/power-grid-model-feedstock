@@ -1,63 +1,93 @@
 schema_version: 1
 
 context:
-  name: power-grid-model
+  feedstock_name: power-grid-model
   version: "1.13.99"
 
-package:
-  name: ${{ name|lower }}
-  version: ${{ version }}
-
 source:
-  url: https://github.com/PowerGridModel/${{ name }}/archive/v${{ version }}.tar.gz
+  url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
   sha256: f5ec410222ae8b5259710d588d5a0e278470bc4131a236fb1101298aaf291277
 
 build:
-  number: 0
-  skip: match(python, "<3.12") or match(python, ">3.12") or win32 or ppc64le or (python_impl == 'pypy')
-  python:
-    version_independent: true
+  number: 1
 
-requirements:
-  build:
-    - ${{ compiler('cxx') }}
-    - ${{ stdlib("c") }}
-    - if: build_platform != target_platform
-      then:
-        - python
-        - cross-python_${{ target_platform }}
-    - eigen
-    - libboost-devel
-    - msgpack-cxx
-    - nlohmann_json
-    - ninja
-    - cmake
-  host:
-    - python
-    - scikit-build-core
-    - pip
-  run:
-    - python
-    - numpy >=2.0.0
+outputs:
+  
+  # Build the C++ library for all platforms
+  - package:
+      name: "libpower-grid-model"
+      version: ${{ version }}
 
-tests:
-  - python:
-      imports:
-        - power_grid_model
-      pip_check: true
-  - files:
-      source:
-        - tests
-        - pyproject.toml
+    build:
+      skip: win32 or ppc64le or (python_impl == 'pypy')
+      script:
+        file: ${{ "build_libpower-grid-model.bat" if win else "build_libpower-grid-model.sh" }}
+
     requirements:
+      build:
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib("c") }}
+        - ninja
+        - cmake
+      host:
+        - eigen
+        - libboost-devel
+        - msgpack-cxx
+        - nlohmann_json
       run:
+
+    tests:
+      - files:
+          source:
+            - tests
+        requirements:
+          run:
+
+        script:
+          - cmake --help
+
+  # Build the Python bindings for all platforms
+  - package:
+      name: "power-grid-model"
+      version: ${{ version }}
+
+    build:
+      skip: match(python, "<3.12") or match(python, ">3.12") or win32 or ppc64le or (python_impl == 'pypy')
+      python:
+        version_independent: true
+
+    requirements:
+      build:
+        - if: build_platform != target_platform
+          then:
+            - python
+            - cross-python_${{ target_platform }}
+      host:
+        - python
+        - scikit-build-core
         - pip
-        - pytest
-        - pytest-cov
-        - msgpack-python
-        - colorama
-    script:
-      - pytest
+      run:
+        - python
+        - numpy >=2.0.0
+
+    tests:
+      - python:
+          imports:
+            - power_grid_model
+          pip_check: true
+      - files:
+          source:
+            - tests
+            - pyproject.toml
+        requirements:
+          run:
+            - pip
+            - pytest
+            - pytest-cov
+            - msgpack-python
+            - colorama
+        script:
+          - pytest
 
 about:
   summary: Python/C++ library for distribution power system analysis
