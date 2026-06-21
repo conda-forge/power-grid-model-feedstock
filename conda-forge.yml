@@ -15,6 +15,7 @@ provider:
   linux_ppc64le: None
   osx_64: azure
   win_64: azure
+  win32: None
 test: native
 conda_install_tool: pixi
 conda_build_tool: rattler-build

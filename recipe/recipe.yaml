@@ -14,7 +14,7 @@ source:
 
 build:
   number: 1
-  skip: win32 or ppc64le or (python_impl == 'pypy')
+  skip: (python_impl == 'pypy')
 
 
 # multi stage build to build the C++ library and the Python bindings separately
@@ -74,7 +74,7 @@ outputs:
 
     build:
       noarch: python
-      skip: not linux_64
+      skip: not (linux and x86_64)
       script:
         file: ${{ "build_power-grid-model.bat" if win else "build_power-grid-model.sh" }}
 
