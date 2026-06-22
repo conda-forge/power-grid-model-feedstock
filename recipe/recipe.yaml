@@ -80,7 +80,7 @@ outputs:
               - cmake --build build
               - .\build\power_grid_model_package_test.exe
 
-  # Build the Python bindings for all platforms
+  # Build the Python bindings only once in Linux x86_64, but it is a noarch package that can be installed on any platform.
   - package:
       name: "power-grid-model"
       version: ${{ version }}
@@ -89,7 +89,7 @@ outputs:
       noarch: python
       skip: not (linux and x86_64)
       script:
-        file: ${{ "build_power-grid-model.bat" if win else "build_power-grid-model.sh" }}
+        file: "build_power-grid-model.sh"
 
     requirements:
       
