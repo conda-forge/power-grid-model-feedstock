@@ -8,9 +8,6 @@ fi
 
 echo ${PKG_VERSION} > ${SRC_DIR}/VERSION
 
-ls -al ${SRC_DIR}
-ls -al .
-
 cmake ${CMAKE_ARGS} \
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
@@ -21,5 +18,3 @@ cmake ${CMAKE_ARGS} \
 cmake --build build/ --verbose -j1
 
 cmake --install build/
-
-${PYTHON} -m pip install ${SRC_DIR} -vv --no-build-isolation --no-deps -C wheel.cmake=false

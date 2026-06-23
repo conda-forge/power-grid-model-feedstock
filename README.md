@@ -1,5 +1,5 @@
-About power-grid-model-feedstock
-================================
+About libpower-grid-model-feedstock
+===================================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/power-grid-model-feedstock/blob/main/LICENSE.txt)
 
@@ -17,7 +17,14 @@ Current build status
 ====================
 
 
-<table>
+<table><tr>
+    <td>GitHub Actions</td>
+    <td>
+      <a href="https://github.com/conda-forge/power-grid-model-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/power-grid-model-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
+      </a>
+    </td>
+  </tr>
     
   <tr>
     <td>Azure</td>
@@ -31,24 +38,24 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_python3.12.____cpython</td>
+              <td>osx_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19459&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/power-grid-model-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.12.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/power-grid-model-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_python3.12.____cpython</td>
+              <td>osx_arm64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19459&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/power-grid-model-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.12.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/power-grid-model-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_python3.12.____cpython</td>
+              <td>win_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19459&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/power-grid-model-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.12.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/power-grid-model-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -64,53 +71,54 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libpower--grid--model-green.svg)](https://anaconda.org/conda-forge/libpower-grid-model) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libpower-grid-model.svg)](https://anaconda.org/conda-forge/libpower-grid-model) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libpower-grid-model.svg)](https://anaconda.org/conda-forge/libpower-grid-model) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libpower-grid-model.svg)](https://anaconda.org/conda-forge/libpower-grid-model) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-power--grid--model-green.svg)](https://anaconda.org/conda-forge/power-grid-model) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/power-grid-model.svg)](https://anaconda.org/conda-forge/power-grid-model) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/power-grid-model.svg)](https://anaconda.org/conda-forge/power-grid-model) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/power-grid-model.svg)](https://anaconda.org/conda-forge/power-grid-model) |
 
-Installing power-grid-model
-===========================
+Installing libpower-grid-model
+==============================
 
-Installing `power-grid-model` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `libpower-grid-model` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `power-grid-model` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libpower-grid-model, power-grid-model` can be installed with `conda`:
 
 ```
-conda install power-grid-model
-```
-
-or with `mamba`:
-
-```
-mamba install power-grid-model
-```
-
-It is possible to list all of the versions of `power-grid-model` available on your platform with `conda`:
-
-```
-conda search power-grid-model --channel conda-forge
+conda install libpower-grid-model power-grid-model
 ```
 
 or with `mamba`:
 
 ```
-mamba search power-grid-model --channel conda-forge
+mamba install libpower-grid-model power-grid-model
+```
+
+It is possible to list all of the versions of `libpower-grid-model` available on your platform with `conda`:
+
+```
+conda search libpower-grid-model --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search libpower-grid-model --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search power-grid-model --channel conda-forge
+mamba repoquery search libpower-grid-model --channel conda-forge
 
-# List packages depending on `power-grid-model`:
-mamba repoquery whoneeds power-grid-model --channel conda-forge
+# List packages depending on `libpower-grid-model`:
+mamba repoquery whoneeds libpower-grid-model --channel conda-forge
 
-# List dependencies of `power-grid-model`:
-mamba repoquery depends power-grid-model --channel conda-forge
+# List dependencies of `libpower-grid-model`:
+mamba repoquery depends libpower-grid-model --channel conda-forge
 ```
 
 
@@ -155,17 +163,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating power-grid-model-feedstock
-===================================
+Updating libpower-grid-model-feedstock
+======================================
 
-If you would like to improve the power-grid-model recipe or build a new
+If you would like to improve the libpower-grid-model recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/power-grid-model-feedstock are
+Note that all branches in the conda-forge/libpower-grid-model-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.

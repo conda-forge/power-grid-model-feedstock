@@ -1,63 +1,128 @@
 schema_version: 1
 
 context:
-  name: power-grid-model
+  feedstock_name: power-grid-model
   version: "1.13.100"
 
-package:
-  name: ${{ name|lower }}
+recipe:
+  name: power-grid-model
   version: ${{ version }}
 
 source:
-  url: https://github.com/PowerGridModel/${{ name }}/archive/v${{ version }}.tar.gz
+  url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
   sha256: dcf02dfed65233e717d90e0c2b108b440dff2d65c41e52803229615278596589
 
 build:
-  number: 0
-  skip: match(python, "<3.12") or match(python, ">3.12") or win32 or ppc64le or (python_impl == 'pypy')
-  python:
-    version_independent: true
+  number: 1
+  skip: (python_impl == 'pypy')
 
-requirements:
-  build:
-    - ${{ compiler('cxx') }}
-    - ${{ stdlib("c") }}
-    - if: build_platform != target_platform
-      then:
-        - python
-        - cross-python_${{ target_platform }}
-    - eigen
-    - libboost-devel
-    - msgpack-cxx
-    - nlohmann_json
-    - ninja
-    - cmake
-  host:
-    - python
-    - scikit-build-core
-    - pip
-  run:
-    - python
-    - numpy >=2.0.0
 
-tests:
-  - python:
-      imports:
-        - power_grid_model
-      pip_check: true
-  - files:
-      source:
-        - tests
-        - pyproject.toml
+# multi stage build to build the C++ library and the Python bindings separately
+outputs:
+  
+  # Build the C++ library for all platforms
+  - package:
+      name: "libpower-grid-model"
+      version: ${{ version }}
+
+    build:
+      script:
+        file: ${{ "build_libpower-grid-model.bat" if win else "build_libpower-grid-model.sh" }}
+      variant:
+        # libpower-grid-model is a pure C++ library
+        # so the package is not Python-versioned.
+        ignore_keys:
+          - python
+
     requirements:
-      run:
+      build:
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib("c") }}
+        - ninja
+        - cmake
+        - eigen
+        - libboost-devel
+        - msgpack-cxx
+        - nlohmann_json
+
+      # empty host requirements to avoid pinning the header-only dependencies in runtime
+      host:
+
+      run_exports:
+        # pin stable ABI on major version
+        - ${{ pin_subpackage('libpower-grid-model', upper_bound='x') }}
+
+    tests:
+      - files:
+          source:
+            - tests/package_tests
+        requirements:
+          run:
+            - cmake
+            - ninja
+            - ${{ compiler('cxx') }}
+            - ${{ stdlib("c") }}
+
+        # TODO add test
+        script:
+          - if: unix
+            then:
+              - cd tests/package_tests
+              - mkdir build
+              - cmake ${CMAKE_ARGS} -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Release
+              - cmake --build build
+              - ./build/power_grid_model_package_test
+          - if: win
+            then:
+              - cd tests\package_tests
+              - mkdir build
+              - cmake %CMAKE_ARGS% -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Release
+              - cmake --build build
+              - .\build\power_grid_model_package_test.exe
+
+  # Build the Python bindings only once in Linux x86_64, but it is a noarch package that can be installed on any platform.
+  - package:
+      name: "power-grid-model"
+      version: ${{ version }}
+
+    build:
+      noarch: python
+      skip: not (linux and x86_64)
+      script:
+        file: "build_power-grid-model.sh"
+
+    requirements:
+      
+      # not build requirements
+      build:
+
+      host:
+        - python ${{ python_min }}.*
+        - scikit-build-core
         - pip
-        - pytest
-        - pytest-cov
-        - msgpack-python
-        - colorama
-    script:
-      - pytest
+      run:
+        - python >= ${{ python_min }}
+        - ${{ pin_subpackage('libpower-grid-model', upper_bound='x.x.x') }}
+        - numpy >=2.0.0
+
+    tests:
+      - python:
+          imports:
+            - power_grid_model
+          pip_check: true
+      - files:
+          source:
+            - tests
+            - pyproject.toml
+        requirements:
+          run:
+            - pip
+            - pytest
+            - pytest-cov
+            - msgpack-python
+            - colorama
+        script:
+          - pytest
 
 about:
   summary: Python/C++ library for distribution power system analysis
