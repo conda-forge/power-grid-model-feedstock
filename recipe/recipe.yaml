@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   feedstock_name: power-grid-model
-  version: "1.13.100"
+  version: "1.13.101"
 
 recipe:
   name: power-grid-model
@@ -10,16 +10,15 @@ recipe:
 
 source:
   url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
-  sha256: dcf02dfed65233e717d90e0c2b108b440dff2d65c41e52803229615278596589
+  sha256: 228c12380eff4dc7000141e13cea4d4e0421befdc58d329b36f50307e308a360
 
 build:
-  number: 1
+  number: 0
   skip: (python_impl == 'pypy')
 
 
 # multi stage build to build the C++ library and the Python bindings separately
 outputs:
-  
   # Build the C++ library for all platforms
   - package:
       name: "libpower-grid-model"
@@ -92,7 +91,6 @@ outputs:
         file: "build_power-grid-model.sh"
 
     requirements:
-      
       # not build requirements
       build:
 
