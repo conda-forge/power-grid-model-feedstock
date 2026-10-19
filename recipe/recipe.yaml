@@ -11,8 +11,8 @@ recipe:
 source:
   # url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
   # sha256: d42f484091b54e23ec0fc7bf6373c4f8524be0c86bef368a3e5ed9f06aaefe36
-  url: https://github.com/PowerGridModel/power-grid-model/archive/025ac4e1187c95f242825dffc25e822303fe9ea2.tar.gz
-  sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  url: https://github.com/PowerGridModel/power-grid-model/archive/754b5e64f3262da91beddd837a520aa1558cb467.tar.gz
+  sha256: b682ee6bd7418b9e478eb6cf749463317e4d26376f9960e3bbb5191f8de530b6
 
 build:
   number: 1  # TODO revert to 0 before merge
