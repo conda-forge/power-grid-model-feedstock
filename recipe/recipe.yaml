@@ -115,6 +115,9 @@ outputs:
           imports:
             - power_grid_model
           pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
       - files:
           source:
             - tests
