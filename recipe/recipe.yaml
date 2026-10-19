@@ -9,11 +9,13 @@ recipe:
   version: ${{ version }}
 
 source:
-  url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
-  sha256: d42f484091b54e23ec0fc7bf6373c4f8524be0c86bef368a3e5ed9f06aaefe36
+  # url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
+  # sha256: d42f484091b54e23ec0fc7bf6373c4f8524be0c86bef368a3e5ed9f06aaefe36
+  url: https://github.com/PowerGridModel/power-grid-model/archive/025ac4e1187c95f242825dffc25e822303fe9ea2.tar.gz
+  sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 build:
-  number: 0
+  number: 1  # TODO revert to 0 before merge
   skip: (python_impl == 'pypy')
 
 
@@ -43,6 +45,7 @@ outputs:
         - libboost-devel
         - msgpack-cxx
         - nlohmann_json
+        - cli11
 
       # empty host requirements to avoid pinning the header-only dependencies in runtime
       host:
@@ -66,6 +69,8 @@ outputs:
         script:
           - if: unix
             then:
+              - power-grid-model --help
+              - power-grid-model --version
               - cd tests/package_tests
               - mkdir build
               - cmake ${CMAKE_ARGS} -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Release
@@ -73,6 +78,8 @@ outputs:
               - ./build/power_grid_model_package_test
           - if: win
             then:
+              - power-grid-model --help
+              - power-grid-model --version
               - cd tests\package_tests
               - mkdir build
               - cmake %CMAKE_ARGS% -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Release
