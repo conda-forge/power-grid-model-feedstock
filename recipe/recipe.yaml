@@ -12,7 +12,7 @@ source:
   # url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
   # sha256: d42f484091b54e23ec0fc7bf6373c4f8524be0c86bef368a3e5ed9f06aaefe36
   url: https://github.com/PowerGridModel/power-grid-model/archive/754b5e64f3262da91beddd837a520aa1558cb467.tar.gz
-  sha256: b682ee6bd7418b9e478eb6cf749463317e4d26376f9960e3bbb5191f8de530b6
+  sha256: bdd49ff9000dc7773f61653ff2068475eb831a4fe024dc513684e5c84e7c7622
 
 build:
   number: 1  # TODO revert to 0 before merge
