@@ -9,10 +9,11 @@ recipe:
   version: ${{ version }}
 
 source:
-  # url: https://github.com/PowerGridModel/power-grid-model/archive/723f09e3a9823545835a844141c9fe8d330a335c.tar.gz
-  # sha256: bdd49ff9000dc7773f61653ff2068475eb831a4fe024dc513684e5c84e7c7622
-  url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
-  sha256: 8c0cde726cdf112dc2408d2f73f98468456816127c41103aa649719a2f77027b
+  # url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
+  # sha256: 8c0cde726cdf112dc2408d2f73f98468456816127c41103aa649719a2f77027b
+  url: https://github.com/PowerGridModel/power-grid-model/archive/8487ce407ef5c5e003fa56117211cad7cb455ab0.tar.gz
+  sha256: bdd49ff9000dc7773f61653ff2068475eb831a4fe024dc513684e5c84e7c7622
+
 
 build:
   number: 1  # TODO revert to 0 before merge
