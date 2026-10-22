@@ -2,21 +2,18 @@ schema_version: 1
 
 context:
   feedstock_name: power-grid-model
-  version: "1.13.200"
+  version: "1.13.207"
 
 recipe:
   name: power-grid-model
   version: ${{ version }}
 
 source:
-  # url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
-  # sha256: 8c0cde726cdf112dc2408d2f73f98468456816127c41103aa649719a2f77027b
-  url: https://github.com/PowerGridModel/power-grid-model/archive/8487ce407ef5c5e003fa56117211cad7cb455ab0.tar.gz
-  sha256: c284516323cb2cd7938c2fef8811e3e87f0fedef8941563cb796dacc8d1a5e37
-
+  url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
+  sha256: d598697631155bf7f55bd4c1bce7b6aaaf3cce75c501ca77adba7be0122fad50
 
 build:
-  number: 1  # TODO revert to 0 before merge
+  number: 0
   skip: (python_impl == 'pypy')
 
 
