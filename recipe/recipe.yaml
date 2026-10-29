@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   feedstock_name: power-grid-model
-  version: "1.13.215"
+  version: "1.13.216"
 
 recipe:
   name: power-grid-model
@@ -10,7 +10,7 @@ recipe:
 
 source:
   url: https://github.com/PowerGridModel/${{ feedstock_name }}/archive/v${{ version }}.tar.gz
-  sha256: 7a38cc336bbabdc7cd714c0166dbf1f229167873348d11cfce1e5814da88769f
+  sha256: 6061884143432408cd5c49041a6791554235617e92aa77c38451ed106d8b1194
 
 build:
   number: 0
